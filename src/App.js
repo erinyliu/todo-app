@@ -5,9 +5,10 @@ import Todo from './Todo.js'
 
 
 function App() {
+  const title = <div id="toDoTitle"><h1>📝 Todo App</h1></div>
   return (
     <div>
-      <div id="toDoTitle"><h1>📝 Todo App</h1></div>
+      {title}
       <Todo></Todo>
     </div>
   );

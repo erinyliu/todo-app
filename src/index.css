@@ -12,8 +12,19 @@ code {
     monospace;
 }
 
-.taskListContainer {
+.toDoContainer {
   text-align: center;
+  align-content: center;
+}
+
+.taskListContainer {
   margin-top:30px;
   font-size: 16px;
+}
+
+.taskFormContainer {
+  padding-top: 30px;
+  width: 30%;
+  display: inline-block;
+  margin: 0px;
 }
