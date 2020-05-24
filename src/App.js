@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Todo from './Todo.js'
+import Comments from './Comments.js'
 
 
 
@@ -10,6 +11,7 @@ function App() {
     <div>
       {title}
       <Todo></Todo>
+      <div><Comments></Comments></div>
     </div>
   );
 }
