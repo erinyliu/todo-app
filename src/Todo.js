@@ -41,10 +41,13 @@ export default class Todo extends Component {
     let taskList = JSON.parse(localStorage.getItem('taskList'))
     taskList.splice(index, 1)
     localStorage.setItem('taskList', JSON.stringify(taskList))
+    this.setState({
+      taskList: taskList
+    })
     this.renderTasks()
   }
 
-  renderTasks() {
+  renderTasks = () => {
     let tasks = JSON.parse(localStorage.getItem('taskList'))
     if (tasks != null) {
       return (
@@ -73,8 +76,6 @@ export default class Todo extends Component {
       )
     }
 }
-
-
 
   render() {
     return (
