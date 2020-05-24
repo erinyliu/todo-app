@@ -1,67 +1,97 @@
 import React, {Component} from 'react';
-import {Button, Form, Input, Icon, Modal} from 'semantic-ui-react'
+import {Button, Form, Input, Icon, Modal, Card, Header} from 'semantic-ui-react'
 
 export default class Todo extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       task: "",
       taskList: []
     };
   }
 
+  // on load get the task list
   componentDidMount = () => {
-    this.retrieveTasks();
-  }
+    this.renderTasks()
+  };
 
-  addTask = (event) => {
-
+  onChange = event => {
     this.setState({
       task: event.target.value
+    });
+  };
+
+  onSubmit = () => {
+    let taskList = JSON.parse(localStorage.getItem('taskList'))
+    if (taskList == null) {
+      taskList = []
+    }
+    taskList.slice()
+    let taskObject = {task: this.state.task}
+    taskList.push(taskObject)
+    localStorage.setItem('taskList', JSON.stringify(taskList))
+    this.setState({
+      task: "",
+      taskList: taskList
     })
+  };
 
+  removeTask = (index) => {
+    let taskList = JSON.parse(localStorage.getItem('taskList'))
+    taskList.splice(index, 1)
+    localStorage.setItem('taskList', JSON.stringify(taskList))
+    this.renderTasks()
   }
 
-  updateTask = () => {
+  renderTasks() {
+    let tasks = JSON.parse(localStorage.getItem('taskList'))
+    if (tasks != null) {
+      return (
+        <div>
+          {tasks.map((task, index) => {
+            return (
+              <div>
+              <Card.Group>
+              <Card className="taskCard" fluid color='blue' inline>
+                <Card.Content>
+                  <Card.Header>⭐️  {task.task}</Card.Header>
+                  <Card.Meta textAlign='right'>
+                    <div className="deleteTask">
+                      <Button onClick={()=>this.removeTask(task.index)} negative compact icon>
+                        <Icon name='remove'/>
+                      </Button>
+                    </div>
+                  </Card.Meta>
+                </Card.Content>
+              </Card>
+              </Card.Group>
+              </div>
+            )
+          })}
+        </div>
+      )
+    }
+}
 
-  }
 
-  removeTask = () => {
-
-  }
-
-  retrieveTasks = () => {
-
-  }
-
-  // renderButton = () => {
-  //   return (
-  //     <Button basic color='blue' size='large' animated>
-  //       <Button.Content visible>
-  //         <Icon name='plus'/>
-  //       </Button.Content>
-  //       <Button.Content hidden>Add Task</Button.Content>
-  //     </Button>
-  //   )
-  // }
 
   render() {
     return (
-      <div className="toDoContainer">
-        <div className="taskListContainer">This will be the container for the task list.</div>
-        <div className="taskFormContainer">
-          <Form className="taskForm">
-            <Form.Field>
-              <Input type='text' placeholder="Add Task" action>
-                <Input/>
-                <Button color='teal' type='submit'>
-                  <Icon name='plus'/>
-                </Button>
-              </Input>
-            </Form.Field>
+        <div className="toDoContainer">
+          <div className="taskFormContainer">
+          <Form onSubmit={this.onSubmit}>
+            <Input fluid
+              type="text"
+              name="task"
+              action={{icon: 'plus', color:'teal'}}
+              value={this.state.task}
+              onChange={this.onChange}
+              placeholder="Add task"/>
           </Form>
-        </div>
+          </div>
+          <div className="savedTasksContainer">{this.renderTasks()}</div>
       </div>
-    )
+    );
   }
 }

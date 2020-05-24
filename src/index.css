@@ -17,14 +17,19 @@ code {
   align-content: center;
 }
 
-.taskListContainer {
-  margin-top:30px;
-  font-size: 16px;
-}
-
 .taskFormContainer {
   padding-top: 30px;
-  width: 30%;
   display: inline-block;
   margin: 0px;
+  width:50%;
+}
+.savedTasksContainer {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top:25px;
+}
+
+.taskCard {
+  text-align: left;
 }
