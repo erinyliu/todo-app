@@ -25,7 +25,7 @@ export default class Comments extends Component {
     comments.slice();
     let commentObject = {
       comment: this.state.comment,
-      datePosted: new Date().toString()
+      // datePosted: new Date().toUTCString()
     }
     var time = commentObject.datePosted;
     // commentObject.datePosted = time.getMonth() + 1 + "/" + time.getDate() + "/20"
@@ -52,9 +52,9 @@ export default class Comments extends Component {
               <Comment.Avatar src='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
               <Comment.Content>
                 <Comment.Author as='a'>Anonymous</Comment.Author>
-                <Comment.Metadata>
+                {/*<Comment.Metadata>
                   <div>on  {comment.datePosted}</div>
-                </Comment.Metadata>
+                </Comment.Metadata>*/}
                 <Comment.Text>{comment.comment}</Comment.Text>
               </Comment.Content>
             </Comment>
