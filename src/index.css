@@ -36,15 +36,13 @@ code {
 }
 
 .feedContainer {
-  padding-top: 50px;
+  padding-top: 25px;
   margin: auto;
   justify-content: center;
   width:70%;
+  padding-bottom: 50px;
 }
 
 .comments {
   padding-bottom: 15px;
-}
-.time {
-  margin-bottom: 2px;
 }
