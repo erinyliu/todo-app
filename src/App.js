@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
       {title}
-      <Todo></Todo>
-      <div><Comments></Comments></div>
+      <div><Todo></Todo></div>
+      <div className="feedContainer"><Comments></Comments></div>
     </div>
   );
 }

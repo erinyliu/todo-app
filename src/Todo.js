@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Form, Input, Icon, Modal, Card, Header} from 'semantic-ui-react'
+import {Button, Form, Input, Icon, Card, Header} from 'semantic-ui-react'
+
 
 export default class Todo extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ export default class Todo extends Component {
 
     this.state = {
       task: "",
-      taskList: []
+      taskList: [],
     };
   }
 
@@ -24,9 +25,7 @@ export default class Todo extends Component {
 
   onSubmit = () => {
     let taskList = JSON.parse(localStorage.getItem('taskList'))
-    if (taskList == null) {
-      taskList = []
-    }
+    if (taskList == null) {taskList = []}
     taskList.slice()
     let taskObject = {task: this.state.task}
     taskList.push(taskObject)
@@ -61,7 +60,7 @@ export default class Todo extends Component {
                   <Card.Header>⭐️  {task.task}</Card.Header>
                   <Card.Meta textAlign='right'>
                     <div className="deleteTask">
-                      <Button onClick={()=>this.removeTask(task.index)} negative compact icon>
+                      <Button onClick={() => this.removeTask(task.index)} negative compact icon>
                         <Icon name='remove'/>
                       </Button>
                     </div>
@@ -75,7 +74,7 @@ export default class Todo extends Component {
         </div>
       )
     }
-}
+  }
 
   render() {
     return (
