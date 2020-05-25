@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Form, Input, Icon, Header, Comment, TextArea} from 'semantic-ui-react'
+import {Button, Form, Header, Comment} from 'semantic-ui-react'
 
 export default class Comments extends Component {
   constructor(props) {
@@ -25,10 +25,10 @@ export default class Comments extends Component {
     comments.slice();
     let commentObject = {
       comment: this.state.comment,
-      datePosted: new Date(),
+      datePosted: new Date().toString()
     }
     var time = commentObject.datePosted;
-    commentObject.datePosted = time.getMonth() + 1 + "/" + time.getDate() + "/20"
+    // commentObject.datePosted = time.getMonth() + 1 + "/" + time.getDate() + "/20"
     comments.push(commentObject)
     localStorage.setItem('commentList', JSON.stringify(comments))
     this.setState({
@@ -53,7 +53,7 @@ export default class Comments extends Component {
               <Comment.Content>
                 <Comment.Author as='a'>Anonymous</Comment.Author>
                 <Comment.Metadata>
-                  <div>on {comment.datePosted}</div>
+                  <div>on  {comment.datePosted}</div>
                 </Comment.Metadata>
                 <Comment.Text>{comment.comment}</Comment.Text>
               </Comment.Content>

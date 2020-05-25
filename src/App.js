@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 import Todo from './Todo.js'
 import Comments from './Comments.js'

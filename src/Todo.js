@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Form, Input, Icon, Card, Header} from 'semantic-ui-react'
+import {Button, Form, Input, Icon, Card} from 'semantic-ui-react'
 
 
 export default class Todo extends Component {
